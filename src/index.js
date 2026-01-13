@@ -7,6 +7,12 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <div style={{ padding: "40px", fontFamily: "Arial" }}>
+      <h1>Wafer Yield Analytics System</h1>
+      <br />
+      <p>React is working correctly.</p>
+      <p>index.js render successful.</p>
+    </div>
     <App />
   </React.StrictMode>
 );
