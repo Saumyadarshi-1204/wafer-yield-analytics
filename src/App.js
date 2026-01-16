@@ -2,143 +2,174 @@ import React from "react";
 
 function App() {
   return (
-    <div
-      className="min-vh-100"
-      style={{
-        background:
-          "linear-gradient(135deg, #f4f7fa 0%, #e8eef5 100%)",
-      }}
-    >
+    <div style={{ backgroundColor: "#f8fafc" }}>
       {/* NAVBAR */}
-      <nav className="navbar navbar-expand-lg bg-white px-4 border-bottom">
-        <span
-          className="navbar-brand fw-semibold"
-          style={{ color: "#2f5d8a" }}
-        >
-          Wafer Yield Analytics
-        </span>
-
-        <div className="ms-auto d-flex gap-4 align-items-center">
-          <span className="text-muted small">Dashboard</span>
-          <span className="text-muted small">Analytics</span>
-          <button
-            className="btn btn-sm"
-            style={{
-              border: "1px solid #2f5d8a",
-              color: "#2f5d8a",
-            }}
+      <nav className="navbar navbar-expand-lg bg-white border-bottom">
+        <div className="container">
+          <span
+            className="navbar-brand fw-bold"
+            style={{ color: "#1f355e", letterSpacing: "0.3px" }}
           >
-            Login
-          </button>
+            Wafer Yield Analytics
+          </span>
+
+          <div className="ms-auto d-flex align-items-center gap-4">
+            <span className="text-muted small">Dashboard</span>
+            <span className="text-muted small">Analytics</span>
+            <span className="text-muted small">Solutions</span>
+            <button className="btn btn-outline-primary btn-sm px-3">
+              Login
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* HERO */}
-      <div className="container py-5">
+      <section className="container py-5">
         <div className="row align-items-center">
-          <div className="col-lg-7">
-            <h1 className="fw-bold text-dark">
-              Wafer Yield & Defect
+          <div className="col-lg-6">
+            <h1
+              className="fw-bold mb-3"
+              style={{ color: "#1f355e", lineHeight: "1.25" }}
+            >
+              Semiconductor
               <br />
-              <span style={{ color: "#2f5d8a" }}>
-                Analysis Platform
-              </span>
+              Wafer Yield Intelligence
             </h1>
 
-            <p className="text-muted mt-3">
-              Analyze wafer yield, visualize defect patterns, and compare
-              fabrication lots using standardized wafer map data.
+            <p className="text-secondary fs-6 mb-4">
+              A manufacturing analytics platform to evaluate wafer yield,
+              visualize defect patterns, and support fabrication quality
+              decisions using large-scale wafer map data.
             </p>
 
-            <div className="mt-4 d-flex gap-3">
+            <div className="d-flex gap-3">
               <button
                 className="btn px-4"
                 style={{
-                  backgroundColor: "#2f5d8a",
+                  backgroundColor: "#1f355e",
                   color: "#ffffff",
                 }}
               >
-                Open Dashboard
+                Access Dashboard
               </button>
-
               <button className="btn btn-outline-secondary px-4">
-                View Capabilities
+                Explore Capabilities
               </button>
             </div>
           </div>
 
-          {/* WAFER VISUAL */}
-          <div className="col-lg-5 d-flex justify-content-center mt-5 mt-lg-0">
+          {/* HERO VISUAL */}
+          <div className="col-lg-6 d-flex justify-content-center mt-5 mt-lg-0">
             <div
               className="rounded-circle d-grid shadow-sm"
               style={{
-                width: "240px",
-                height: "240px",
-                gridTemplateColumns: "repeat(5, 1fr)",
-                gap: "10px",
-                padding: "32px",
+                width: "300px",
+                height: "300px",
+                gridTemplateColumns: "repeat(6, 1fr)",
+                gap: "8px",
+                padding: "40px",
                 background:
-                  "radial-gradient(circle, #ffffff 0%, #dde5ef 80%)",
+                  "radial-gradient(circle, #ffffff 0%, #e6ebf2 80%)",
               }}
             >
-              {Array.from({ length: 25 }).map((_, i) => (
+              {Array.from({ length: 36 }).map((_, i) => (
                 <span
                   key={i}
                   className="rounded-circle"
                   style={{
                     background:
-                      Math.random() > 0.2 ? "#6fbf73" : "#e5533d",
+                      Math.random() > 0.22 ? "#2f80ed" : "#e5533d",
                   }}
                 ></span>
               ))}
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* FEATURES */}
-      <div className="container pb-5">
-        <div className="row g-4">
-          <div className="col-md-4">
-            <div className="bg-white p-4 rounded shadow-sm h-100">
-              <h6 className="fw-semibold" style={{ color: "#2f5d8a" }}>
-                Yield Metrics
-              </h6>
-              <p className="text-muted small mb-0">
-                Wafer and lot-level yield calculation.
-              </p>
-            </div>
+      {/* VALUE PROPOSITION */}
+      <section className="bg-white py-5 border-top border-bottom">
+        <div className="container">
+          <div className="row text-center mb-4">
+            <h4 className="fw-semibold" style={{ color: "#1f355e" }}>
+              Designed for Manufacturing & Yield Engineers
+            </h4>
           </div>
 
-          <div className="col-md-4">
-            <div className="bg-white p-4 rounded shadow-sm h-100">
-              <h6 className="fw-semibold" style={{ color: "#2f5d8a" }}>
-                Defect Maps
-              </h6>
-              <p className="text-muted small mb-0">
-                Spatial visualization of failure patterns.
-              </p>
+          <div className="row g-4">
+            <div className="col-md-4">
+              <div className="p-4 h-100">
+                <h6 className="fw-semibold mb-2" style={{ color: "#1f355e" }}>
+                  Yield Analysis
+                </h6>
+                <p className="text-muted small mb-0">
+                  Compute wafer-level and lot-level yield directly from
+                  die-level test results.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="col-md-4">
-            <div className="bg-white p-4 rounded shadow-sm h-100">
-              <h6 className="fw-semibold" style={{ color: "#2f5d8a" }}>
-                Lot Comparison
-              </h6>
-              <p className="text-muted small mb-0">
-                Compare yield and defect distribution across lots.
-              </p>
+            <div className="col-md-4">
+              <div className="p-4 h-100">
+                <h6 className="fw-semibold mb-2" style={{ color: "#1f355e" }}>
+                  Defect Pattern Visualization
+                </h6>
+                <p className="text-muted small mb-0">
+                  Inspect spatial defect distributions across wafers using
+                  industry-standard maps.
+                </p>
+              </div>
+            </div>
+
+            <div className="col-md-4">
+              <div className="p-4 h-100">
+                <h6 className="fw-semibold mb-2" style={{ color: "#1f355e" }}>
+                  Lot Comparison
+                </h6>
+                <p className="text-muted small mb-0">
+                  Compare yield trends and defect density across fabrication
+                  lots.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section className="container py-5">
+        <div className="row mb-4">
+          <h4 className="fw-semibold text-center" style={{ color: "#1f355e" }}>
+            How the Platform Works
+          </h4>
+        </div>
+
+        <div className="row g-4 text-center">
+          <div className="col-md-3">
+            <p className="fw-semibold mb-1">Ingest</p>
+            <p className="text-muted small">Upload wafer test datasets</p>
+          </div>
+          <div className="col-md-3">
+            <p className="fw-semibold mb-1">Process</p>
+            <p className="text-muted small">Normalize die-level data</p>
+          </div>
+          <div className="col-md-3">
+            <p className="fw-semibold mb-1">Analyze</p>
+            <p className="text-muted small">Compute yield and defects</p>
+          </div>
+          <div className="col-md-3">
+            <p className="fw-semibold mb-1">Visualize</p>
+            <p className="text-muted small">Inspect wafer maps & trends</p>
+          </div>
+        </div>
+      </section>
 
       {/* FOOTER */}
       <footer className="bg-white border-top py-3">
         <div className="container d-flex justify-content-between small text-muted">
           <span>© 2026 Wafer Yield Analytics</span>
-          <span>Internal Manufacturing Analytics Platform</span>
+          <span>Manufacturing Yield Intelligence Platform</span>
         </div>
       </footer>
     </div>
