@@ -1,38 +1,148 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app {
+  background: linear-gradient(135deg, #0b0f1a, #11162a);
+  color: #ffffff;
   min-height: 100vh;
+}
+
+/* NAVBAR */
+.navbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  padding: 24px 60px;
+}
+
+.nav-logo {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.nav-links span {
+  margin-left: 28px;
+  font-size: 14px;
+  color: #cfd6ff;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  padding: 80px 60px;
+  gap: 60px;
+}
+
+.hero-content h1 {
+  font-size: 44px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.hero-content h1 span {
+  color: #6aa6ff;
+}
+
+.hero-content p {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #c5cbff;
+  max-width: 520px;
+}
+
+.hero-actions {
+  margin-top: 36px;
+}
+
+.primary-btn {
+  background: #6aa6ff;
+  color: #0b0f1a;
+  border: none;
+  padding: 14px 26px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 14px;
+}
+
+.secondary-btn {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid #6aa6ff;
+  padding: 14px 26px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* VISUAL */
+.hero-visual {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.wafer-placeholder {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #1b2040, #0b0f1a);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 14px;
+  padding: 40px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.wafer-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.wafer-dot.pass {
+  background: #4cd964;
+}
+
+.wafer-dot.fail {
+  background: #ff4d4f;
+}
+
+/* FEATURES */
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 40px 60px 80px;
+}
+
+.feature-card {
+  background: #151a33;
+  padding: 28px;
+  border-radius: 10px;
+}
+
+.feature-card h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.feature-card p {
+  font-size: 14px;
+  color: #c5cbff;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 13px;
+  color: #8f95c7;
 }

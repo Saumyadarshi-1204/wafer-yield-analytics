@@ -1,33 +1,29 @@
-body {
+/* Global reset */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base body styling */
+body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-family: Arial, Helvetica, sans-serif;
-  color: #ffffff;
+  background-color: #0b0f1a;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
 }
 
+/* Root should NOT be centered */
 #root {
-  border: 3px solid #00ffcc;
-  padding: 40px 60px;
-  border-radius: 12px;
-  background-color: rgba(0, 0, 0, 0.35);
-  text-align: center;
+  min-height: 100vh;
 }
 
-h1 {
-  margin-bottom: 12px;
+/* Remove old demo styles */
+h1, p {
+  margin: 0;
 }
 
-p {
-  margin: 6px 0;
-  opacity: 0.9;
-}
-
+/* Code blocks (keep default) */
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
