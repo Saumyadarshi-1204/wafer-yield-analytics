@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 
@@ -10,7 +10,19 @@ import LotComparison from "./pages/LotComparison";
 import DataUpload from "./pages/DataUpload";
 
 function App() {
-  const isAuthenticated = localStorage.getItem("isAuth") === "true";
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem("isAuth") === "true"
+  );
+
+  // Keep auth state in sync with localStorage
+  useEffect(() => {
+    const syncAuth = () => {
+      setIsAuthenticated(localStorage.getItem("isAuth") === "true");
+    };
+
+    window.addEventListener("storage", syncAuth);
+    return () => window.removeEventListener("storage", syncAuth);
+  }, []);
 
   return (
     <ThemeProvider>
@@ -21,22 +33,30 @@ function App() {
 
           <Route
             path="/dashboard"
-            element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}
+            element={
+              isAuthenticated ? <Dashboard /> : <Navigate to="/login" replace />
+            }
           />
 
           <Route
             path="/wafer-analysis"
-            element={isAuthenticated ? <WaferAnalysis /> : <Navigate to="/login" />}
+            element={
+              isAuthenticated ? <WaferAnalysis /> : <Navigate to="/login" replace />
+            }
           />
 
           <Route
             path="/lot-comparison"
-            element={isAuthenticated ? <LotComparison /> : <Navigate to="/login" />}
+            element={
+              isAuthenticated ? <LotComparison /> : <Navigate to="/login" replace />
+            }
           />
 
           <Route
             path="/data-upload"
-            element={isAuthenticated ? <DataUpload /> : <Navigate to="/login" />}
+            element={
+              isAuthenticated ? <DataUpload /> : <Navigate to="/login" replace />
+            }
           />
         </Routes>
       </BrowserRouter>

@@ -8,7 +8,7 @@ function Login() {
 
   const isAuthenticated = localStorage.getItem("isAuth") === "true";
 
-  /* 🚫 Prevent authenticated users from seeing login page */
+  /*  Prevent authenticated users from seeing login page */
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/dashboard");
@@ -20,9 +20,8 @@ function Login() {
 
     // Simulated authentication
     localStorage.setItem("isAuth", "true");
+    setTimeout(() => navigate("/dashboard"), 0);
 
-    // ✅ Redirect immediately
-    navigate("/dashboard");
   };
 
   return (

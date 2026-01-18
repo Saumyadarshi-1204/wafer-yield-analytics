@@ -24,17 +24,21 @@ function Navbar() {
       }}
     >
       {/* BRAND */}
-      <span
-        className="fw-semibold"
+      <div
+        className="d-flex align-items-center gap-2 fw-semibold"
         style={{ cursor: "pointer" }}
         onClick={() => navigate(isAuthenticated ? "/dashboard" : "/")}
       >
-        Wafer Yield Analytics
-      </span>
+      <img
+        src="/images/blueSiliconWafer.png"
+        alt="Wafer Analytics Logo"
+        style={{ width: 26, height: 26 }}
+      />
+        <span>Wafer Yield Analytics</span>
+      </div>
 
       {/* RIGHT SIDE */}
       <div className="d-flex gap-3 align-items-center">
-        {/* INTERNAL NAVIGATION (AUTHENTICATED ONLY) */}
         {isAuthenticated && (
           <span
             style={{
@@ -51,15 +55,15 @@ function Navbar() {
           </span>
         )}
 
-        {/* THEME TOGGLE (ALWAYS AVAILABLE) */}
+        {/* THEME TOGGLE — enhanced */}
         <button
-          className="btn btn-sm btn-outline-secondary"
+          className="btn btn-sm btn-outline-secondary d-flex align-items-center gap-2"
           onClick={toggleTheme}
         >
+          <span>{theme === "dark" ? "🌙" : "☀️"}</span>
           {theme === "dark" ? "Light Mode" : "Dark Mode"}
         </button>
 
-        {/* PUBLIC: LOGIN (ONLY ON LANDING, NOT AUTHENTICATED) */}
         {!isAuthenticated && isLandingPage && (
           <button
             className="btn btn-sm btn-outline-primary"
@@ -69,7 +73,6 @@ function Navbar() {
           </button>
         )}
 
-        {/* PRIVATE: LOGOUT (AUTHENTICATED ONLY) */}
         {isAuthenticated && (
           <button
             className="btn btn-sm btn-outline-danger"

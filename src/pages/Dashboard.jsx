@@ -12,7 +12,10 @@ function Dashboard() {
         <Sidebar />
 
         <div className="flex-grow-1 p-4">
-          <h5 className="fw-semibold mb-4">Dashboard Overview</h5>
+          <h5 className="fw-semibold mb-1">Dashboard Overview</h5>
+          <p className="text-secondary-theme subtle-repeat mb-4">
+            High-level snapshot of yield health and manufacturing activity.
+          </p>
 
           <div className="row g-3 mb-4">
             <div className="col-lg-3 col-md-6">
@@ -32,14 +35,20 @@ function Dashboard() {
           <div className="row g-4 mb-4">
             <div className="col-lg-7">
               <div className="card-theme p-3 rounded">
-                <h6 className="fw-semibold mb-3">Yield Trend by Lot</h6>
+                <h6 className="fw-semibold mb-1">Yield Trend by Lot</h6>
+                <p className="text-secondary-theme subtle-repeat mb-3">
+                  Compare yield performance across production lots.
+                </p>
                 <YieldChart />
               </div>
             </div>
 
             <div className="col-lg-5">
               <div className="card-theme p-3 rounded">
-                <h6 className="fw-semibold mb-3">Wafer Map Preview</h6>
+                <h6 className="fw-semibold mb-1">Wafer Map Preview</h6>
+                <p className="text-secondary-theme subtle-repeat mb-3">
+                  Visual inspection of spatial defect distribution.
+                </p>
                 <WaferMap />
               </div>
             </div>
