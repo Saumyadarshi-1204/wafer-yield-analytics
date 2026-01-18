@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Sidebar from "../components/Sidebar";
 import KpiCard from "../components/KpiCard";
+import WaferMap from "../components/WaferMap";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -13,7 +14,13 @@ function Dashboard() {
   };
 
   return (
-    <div className="d-flex" style={{ minHeight: "100vh", backgroundColor: "#f8fafc" }}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4 }}
+      className="d-flex"
+      style={{ minHeight: "100vh", backgroundColor: "#f8fafc" }}
+    >
       {/* SIDEBAR */}
       <Sidebar />
 
@@ -35,18 +42,18 @@ function Dashboard() {
 
         {/* CONTENT */}
         <div className="p-4">
-          {/* KPI ROW */}
+          {/* KPI ROW — ALWAYS VISIBLE */}
           <div className="row g-3 mb-4">
-            <div className="col-md-3">
+            <div className="col-lg-3 col-md-6">
               <KpiCard title="Average Yield" value="— %" />
             </div>
-            <div className="col-md-3">
+            <div className="col-lg-3 col-md-6">
               <KpiCard title="Total Wafers" value="—" />
             </div>
-            <div className="col-md-3">
+            <div className="col-lg-3 col-md-6">
               <KpiCard title="Active Lots" value="—" />
             </div>
-            <div className="col-md-3">
+            <div className="col-lg-3 col-md-6">
               <KpiCard title="Fail Density" value="—" />
             </div>
           </div>
@@ -54,12 +61,7 @@ function Dashboard() {
           {/* PANELS */}
           <div className="row g-4">
             {/* TABLE */}
-            <motion.div
-              className="col-lg-7"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
+            <div className="col-lg-7">
               <div className="bg-white border rounded p-3">
                 <h6 className="fw-semibold mb-3">Recent Wafers</h6>
 
@@ -88,34 +90,19 @@ function Dashboard() {
                   </tbody>
                 </table>
               </div>
-            </motion.div>
+            </div>
 
-            {/* WAFER MAP PLACEHOLDER */}
-            <motion.div
-              className="col-lg-5"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
+            {/* WAFER MAP */}
+            <div className="col-lg-5">
               <div className="bg-white border rounded p-3 h-100">
                 <h6 className="fw-semibold mb-3">Wafer Map Preview</h6>
-
-                <div
-                  className="d-flex align-items-center justify-content-center text-muted"
-                  style={{
-                    height: "240px",
-                    backgroundColor: "#f1f4f8",
-                    borderRadius: "6px",
-                  }}
-                >
-                  Interactive wafer map will appear here
-                </div>
+                <WaferMap />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </main>
-    </div>
+    </motion.div>
   );
 }
 
