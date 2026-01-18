@@ -17,9 +17,18 @@ function Landing() {
           </span>
 
           <div className="ms-auto d-flex align-items-center gap-4">
-            <span className="text-muted small">Dashboard</span>
+            <span
+              className="text-muted small"
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate("/dashboard")}
+            >
+              Dashboard
+            </span>
+
             <span className="text-muted small">Analytics</span>
+
             <span className="text-muted small">Solutions</span>
+
             <button
               className="btn btn-outline-primary btn-sm px-3"
               onClick={() => navigate("/login")}
@@ -60,13 +69,14 @@ function Landing() {
               >
                 Access Platform
               </button>
+
               <button className="btn btn-outline-secondary px-4">
                 Explore Capabilities
               </button>
             </div>
           </div>
 
-          {/* VISUAL */}
+          {/* WAFER VISUAL */}
           <div className="col-lg-6 d-flex justify-content-center mt-5 mt-lg-0">
             <div
               className="rounded-circle d-grid shadow-sm"
@@ -95,7 +105,7 @@ function Landing() {
         </div>
       </section>
 
-      {/* VALUE */}
+      {/* VALUE SECTION */}
       <section className="bg-white py-5 border-top border-bottom">
         <div className="container">
           <div className="row text-center mb-4">
