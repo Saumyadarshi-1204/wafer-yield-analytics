@@ -1,11 +1,13 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
+
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import WaferAnalysis from "./pages/WaferAnalysis";
 import LotComparison from "./pages/LotComparison";
+import DataUpload from "./pages/DataUpload";
 
 function App() {
   const isAuthenticated = localStorage.getItem("isAuth") === "true";
@@ -30,6 +32,11 @@ function App() {
           <Route
             path="/lot-comparison"
             element={isAuthenticated ? <LotComparison /> : <Navigate to="/login" />}
+          />
+
+          <Route
+            path="/data-upload"
+            element={isAuthenticated ? <DataUpload /> : <Navigate to="/login" />}
           />
         </Routes>
       </BrowserRouter>

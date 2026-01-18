@@ -6,6 +6,17 @@ import { useNavigate } from "react-router-dom";
 function Landing() {
   const navigate = useNavigate();
 
+  // ✅ SMALL, CORRECT FIX
+  const handleAccessDashboard = () => {
+    const isAuthenticated = localStorage.getItem("isAuth") === "true";
+
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <MainLayout>
       <section className="container py-5">
@@ -30,7 +41,7 @@ function Landing() {
 
             <button
               className="btn btn-primary mt-3"
-              onClick={() => navigate("/dashboard")}
+              onClick={handleAccessDashboard}
             >
               Access Dashboard
             </button>

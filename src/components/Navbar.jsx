@@ -1,10 +1,19 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 
 function Navbar() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { theme, toggleTheme } = useTheme();
+
+  const isAuthenticated = localStorage.getItem("isAuth") === "true";
+  const isLandingPage = location.pathname === "/";
+
+  const handleLogout = () => {
+    localStorage.removeItem("isAuth");
+    navigate("/");
+  };
 
   return (
     <nav
@@ -14,22 +23,35 @@ function Navbar() {
         borderBottom: "1px solid var(--border-color)",
       }}
     >
+      {/* BRAND */}
       <span
         className="fw-semibold"
         style={{ cursor: "pointer" }}
-        onClick={() => navigate("/")}
+        onClick={() => navigate(isAuthenticated ? "/dashboard" : "/")}
       >
         Wafer Yield Analytics
       </span>
 
+      {/* RIGHT SIDE */}
       <div className="d-flex gap-3 align-items-center">
-        <span
-          style={{ cursor: "pointer" }}
-          onClick={() => navigate("/dashboard")}
-        >
-          Dashboard
-        </span>
+        {/* INTERNAL NAVIGATION (AUTHENTICATED ONLY) */}
+        {isAuthenticated && (
+          <span
+            style={{
+              cursor: "pointer",
+              fontWeight: location.pathname === "/dashboard" ? 600 : 400,
+              color:
+                location.pathname === "/dashboard"
+                  ? "var(--accent)"
+                  : "var(--text-primary)",
+            }}
+            onClick={() => navigate("/dashboard")}
+          >
+            Dashboard
+          </span>
+        )}
 
+        {/* THEME TOGGLE (ALWAYS AVAILABLE) */}
         <button
           className="btn btn-sm btn-outline-secondary"
           onClick={toggleTheme}
@@ -37,12 +59,25 @@ function Navbar() {
           {theme === "dark" ? "Light Mode" : "Dark Mode"}
         </button>
 
-        <button
-          className="btn btn-sm btn-outline-primary"
-          onClick={() => navigate("/login")}
-        >
-          Login
-        </button>
+        {/* PUBLIC: LOGIN (ONLY ON LANDING, NOT AUTHENTICATED) */}
+        {!isAuthenticated && isLandingPage && (
+          <button
+            className="btn btn-sm btn-outline-primary"
+            onClick={() => navigate("/login")}
+          >
+            Login
+          </button>
+        )}
+
+        {/* PRIVATE: LOGOUT (AUTHENTICATED ONLY) */}
+        {isAuthenticated && (
+          <button
+            className="btn btn-sm btn-outline-danger"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+        )}
       </div>
     </nav>
   );
