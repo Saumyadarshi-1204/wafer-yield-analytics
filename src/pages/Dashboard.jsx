@@ -1,5 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import Sidebar from "../components/Sidebar";
+import KpiCard from "../components/KpiCard";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -12,75 +15,51 @@ function Dashboard() {
   return (
     <div className="d-flex" style={{ minHeight: "100vh", backgroundColor: "#f8fafc" }}>
       {/* SIDEBAR */}
-      <aside
-        className="bg-white border-end p-3"
-        style={{ width: "240px" }}
-      >
-        <h6 className="fw-semibold mb-4" style={{ color: "#1f355e" }}>
-          Wafer Yield Analytics
-        </h6>
+      <Sidebar />
 
-        <div className="d-flex flex-column gap-2 small">
-          <span className="fw-semibold text-primary">Dashboard</span>
-          <span className="text-muted">Wafer Analysis</span>
-          <span className="text-muted">Lot Comparison</span>
-          <span className="text-muted">Data Upload</span>
-        </div>
+      {/* MAIN */}
+      <main className="flex-grow-1">
+        {/* TOP BAR */}
+        <nav className="navbar bg-white border-bottom px-4 d-flex justify-content-between">
+          <span className="fw-semibold" style={{ color: "#1f355e" }}>
+            Dashboard Overview
+          </span>
 
-        <div className="mt-auto pt-4">
           <button
-            className="btn btn-sm btn-outline-secondary w-100"
+            className="btn btn-sm btn-outline-secondary"
             onClick={handleLogout}
           >
             Logout
           </button>
-        </div>
-      </aside>
-
-      {/* MAIN CONTENT */}
-      <main className="flex-grow-1">
-        {/* TOP BAR */}
-        <nav className="navbar bg-white border-bottom px-4">
-          <span className="fw-semibold" style={{ color: "#1f355e" }}>
-            Dashboard Overview
-          </span>
         </nav>
 
+        {/* CONTENT */}
         <div className="p-4">
           {/* KPI ROW */}
           <div className="row g-3 mb-4">
             <div className="col-md-3">
-              <div className="bg-white border rounded p-3">
-                <div className="text-muted small">Average Yield</div>
-                <div className="fs-4 fw-semibold">— %</div>
-              </div>
+              <KpiCard title="Average Yield" value="— %" />
             </div>
-
             <div className="col-md-3">
-              <div className="bg-white border rounded p-3">
-                <div className="text-muted small">Total Wafers</div>
-                <div className="fs-4 fw-semibold">—</div>
-              </div>
+              <KpiCard title="Total Wafers" value="—" />
             </div>
-
             <div className="col-md-3">
-              <div className="bg-white border rounded p-3">
-                <div className="text-muted small">Active Lots</div>
-                <div className="fs-4 fw-semibold">—</div>
-              </div>
+              <KpiCard title="Active Lots" value="—" />
             </div>
-
             <div className="col-md-3">
-              <div className="bg-white border rounded p-3">
-                <div className="text-muted small">Fail Density</div>
-                <div className="fs-4 fw-semibold">—</div>
-              </div>
+              <KpiCard title="Fail Density" value="—" />
             </div>
           </div>
 
-          {/* CONTENT PANELS */}
+          {/* PANELS */}
           <div className="row g-4">
-            <div className="col-lg-7">
+            {/* TABLE */}
+            <motion.div
+              className="col-lg-7"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="bg-white border rounded p-3">
                 <h6 className="fw-semibold mb-3">Recent Wafers</h6>
 
@@ -109,9 +88,15 @@ function Dashboard() {
                   </tbody>
                 </table>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="col-lg-5">
+            {/* WAFER MAP PLACEHOLDER */}
+            <motion.div
+              className="col-lg-5"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="bg-white border rounded p-3 h-100">
                 <h6 className="fw-semibold mb-3">Wafer Map Preview</h6>
 
@@ -123,10 +108,10 @@ function Dashboard() {
                     borderRadius: "6px",
                   }}
                 >
-                  Wafer map visualization will appear here
+                  Interactive wafer map will appear here
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </main>
