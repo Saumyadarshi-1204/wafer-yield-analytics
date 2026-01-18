@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Landing() {
+  const navigate = useNavigate();
+
   return (
     <div style={{ backgroundColor: "#f8fafc" }}>
       {/* NAVBAR */}
@@ -17,7 +20,10 @@ function Landing() {
             <span className="text-muted small">Dashboard</span>
             <span className="text-muted small">Analytics</span>
             <span className="text-muted small">Solutions</span>
-            <button className="btn btn-outline-primary btn-sm px-3">
+            <button
+              className="btn btn-outline-primary btn-sm px-3"
+              onClick={() => navigate("/login")}
+            >
               Login
             </button>
           </div>
@@ -50,6 +56,7 @@ function Landing() {
                   backgroundColor: "#1f355e",
                   color: "#ffffff",
                 }}
+                onClick={() => navigate("/login")}
               >
                 Access Platform
               </button>
