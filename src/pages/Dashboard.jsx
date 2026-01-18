@@ -1,108 +1,52 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import MainLayout from "../layouts/MainLayout";
 import Sidebar from "../components/Sidebar";
 import KpiCard from "../components/KpiCard";
+import YieldChart from "../components/YieldChart";
 import WaferMap from "../components/WaferMap";
 
 function Dashboard() {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.removeItem("isAuth");
-    navigate("/login");
-  };
-
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.4 }}
-      className="d-flex"
-      style={{ minHeight: "100vh", backgroundColor: "#f8fafc" }}
-    >
-      {/* SIDEBAR */}
-      <Sidebar />
+    <MainLayout>
+      <div className="d-flex" style={{ minHeight: "calc(100vh - 56px)" }}>
+        <Sidebar />
 
-      {/* MAIN */}
-      <main className="flex-grow-1">
-        {/* TOP BAR */}
-        <nav className="navbar bg-white border-bottom px-4 d-flex justify-content-between">
-          <span className="fw-semibold" style={{ color: "#1f355e" }}>
-            Dashboard Overview
-          </span>
+        <div className="flex-grow-1 p-4">
+          <h5 className="fw-semibold mb-4">Dashboard Overview</h5>
 
-          <button
-            className="btn btn-sm btn-outline-secondary"
-            onClick={handleLogout}
-          >
-            Logout
-          </button>
-        </nav>
-
-        {/* CONTENT */}
-        <div className="p-4">
-          {/* KPI ROW — ALWAYS VISIBLE */}
           <div className="row g-3 mb-4">
             <div className="col-lg-3 col-md-6">
-              <KpiCard title="Average Yield" value="— %" />
+              <KpiCard title="Average Yield" value="92 %" />
             </div>
             <div className="col-lg-3 col-md-6">
-              <KpiCard title="Total Wafers" value="—" />
+              <KpiCard title="Total Wafers" value="128" />
             </div>
             <div className="col-lg-3 col-md-6">
-              <KpiCard title="Active Lots" value="—" />
+              <KpiCard title="Active Lots" value="4" />
             </div>
             <div className="col-lg-3 col-md-6">
-              <KpiCard title="Fail Density" value="—" />
+              <KpiCard title="Fail Density" value="Low" />
             </div>
           </div>
 
-          {/* PANELS */}
-          <div className="row g-4">
-            {/* TABLE */}
+          <div className="row g-4 mb-4">
             <div className="col-lg-7">
-              <div className="bg-white border rounded p-3">
-                <h6 className="fw-semibold mb-3">Recent Wafers</h6>
-
-                <table className="table table-sm">
-                  <thead className="table-light">
-                    <tr>
-                      <th>Wafer ID</th>
-                      <th>Lot ID</th>
-                      <th>Yield %</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>—</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td>—</td>
-                    </tr>
-                    <tr>
-                      <td>—</td>
-                      <td>—</td>
-                      <td>—</td>
-                      <td>—</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div className="card-theme p-3 rounded">
+                <h6 className="fw-semibold mb-3">Yield Trend by Lot</h6>
+                <YieldChart />
               </div>
             </div>
 
-            {/* WAFER MAP */}
             <div className="col-lg-5">
-              <div className="bg-white border rounded p-3 h-100">
+              <div className="card-theme p-3 rounded">
                 <h6 className="fw-semibold mb-3">Wafer Map Preview</h6>
                 <WaferMap />
               </div>
             </div>
           </div>
         </div>
-      </main>
-    </motion.div>
+      </div>
+    </MainLayout>
   );
 }
 

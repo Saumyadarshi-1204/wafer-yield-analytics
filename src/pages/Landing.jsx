@@ -10,47 +10,37 @@ function Landing() {
     <MainLayout>
       <section className="container py-5">
         <div className="row align-items-center">
-          {/* LEFT CONTENT */}
+          {/* LEFT TEXT */}
           <motion.div
             className="col-lg-6"
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
           >
-            <h1 className="fw-bold" style={{ color: "#1f355e" }}>
+            <h1 className="fw-bold text-primary-theme">
               Semiconductor
               <br />
               Wafer Yield Intelligence
             </h1>
 
-            <p className="text-muted mt-3">
+            <p className="text-secondary-theme mt-3">
               Advanced manufacturing analytics for yield monitoring,
               defect visualization, and lot-level comparison.
             </p>
 
             <button
-              className="btn mt-3 px-4"
-              style={{ backgroundColor: "#1f355e", color: "#fff" }}
-              onClick={() => navigate("/login")}
+              className="btn btn-primary mt-3"
+              onClick={() => navigate("/dashboard")}
             >
               Access Dashboard
             </button>
           </motion.div>
 
-          {/* RIGHT: ANIMATED WAFER METAPHOR */}
-          <motion.div
-            className="col-lg-6 d-flex justify-content-center mt-5 mt-lg-0"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7 }}
-          >
+          {/* RIGHT WAFER */}
+          <div className="col-lg-6 d-flex justify-content-center mt-5 mt-lg-0">
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{
-                repeat: Infinity,
-                duration: 40,
-                ease: "linear",
-              }}
+              transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
               className="d-grid"
               style={{
                 width: "280px",
@@ -60,31 +50,27 @@ function Landing() {
                 padding: "36px",
                 borderRadius: "50%",
                 background:
-                  "radial-gradient(circle at center, #ffffff 0%, #e6ebf2 75%)",
-                boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+                  "radial-gradient(circle at center, var(--bg-card), var(--border-color))",
+                border: "1px solid var(--border-color)",
               }}
             >
               {Array.from({ length: 49 }).map((_, i) => (
-                <motion.span
+                <span
                   key={i}
-                  initial={{ opacity: 0.4 }}
-                  animate={{ opacity: [0.4, 1, 0.4] }}
-                  transition={{
-                    duration: 3 + (i % 5),
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
                   style={{
                     width: "100%",
                     height: "100%",
                     borderRadius: "50%",
                     background:
-                      Math.random() > 0.25 ? "#2f80ed" : "#e5533d",
+                      Math.random() > 0.25
+                        ? "var(--accent)"
+                        : "#e5533d",
+                    opacity: 0.9,
                   }}
                 />
               ))}
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </MainLayout>

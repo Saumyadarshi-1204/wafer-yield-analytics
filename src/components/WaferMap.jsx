@@ -13,23 +13,32 @@ function WaferMap() {
         height: "220px",
         gridTemplateColumns: "repeat(7, 1fr)",
         gap: "6px",
-        padding: "28px",
+        padding: "26px",
         borderRadius: "50%",
         background:
-          "radial-gradient(circle at center, #ffffff 0%, #e6ebf2 75%)",
+          "radial-gradient(circle at center, var(--bg-card), var(--border-color))",
+        border: "1px solid var(--border-color)",
       }}
     >
-      {Array.from({ length: 49 }).map((_, i) => (
-        <motion.span
-          key={i}
-          whileHover={{ scale: 1.15 }}
-          className="rounded-circle"
-          style={{
-            background:
-              Math.random() > 0.2 ? "#2f80ed" : "#e5533d",
-          }}
-        />
-      ))}
+      {Array.from({ length: 49 }).map((_, i) => {
+        const isDefect = Math.random() < 0.2;
+
+        return (
+          <motion.span
+            key={i}
+            whileHover={{ scale: 1.15 }}
+            style={{
+              width: "100%",
+              height: "100%",
+              borderRadius: "50%",
+              background: isDefect
+                ? "#e5533d"                 /* defect die */
+                : "var(--accent)",          /* good die follows theme */
+              opacity: isDefect ? 0.9 : 0.85,
+            }}
+          />
+        );
+      })}
     </motion.div>
   );
 }
