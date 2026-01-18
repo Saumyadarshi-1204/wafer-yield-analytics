@@ -4,6 +4,8 @@ import { ThemeProvider } from "./context/ThemeContext";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import WaferAnalysis from "./pages/WaferAnalysis";
+import LotComparison from "./pages/LotComparison";
 
 function App() {
   const isAuthenticated = localStorage.getItem("isAuth") === "true";
@@ -14,11 +16,20 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
+
           <Route
             path="/dashboard"
-            element={
-              isAuthenticated ? <Dashboard /> : <Navigate to="/login" replace />
-            }
+            element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}
+          />
+
+          <Route
+            path="/wafer-analysis"
+            element={isAuthenticated ? <WaferAnalysis /> : <Navigate to="/login" />}
+          />
+
+          <Route
+            path="/lot-comparison"
+            element={isAuthenticated ? <LotComparison /> : <Navigate to="/login" />}
           />
         </Routes>
       </BrowserRouter>
