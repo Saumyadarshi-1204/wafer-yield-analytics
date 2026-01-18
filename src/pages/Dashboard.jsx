@@ -1,18 +1,32 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("isAuth");
+    navigate("/login");
+  };
+
   return (
     <div style={{ backgroundColor: "#f8fafc", minHeight: "100vh" }}>
       {/* TOP BAR */}
-      <nav className="navbar bg-white border-bottom px-4">
+      <nav className="navbar bg-white border-bottom px-4 d-flex justify-content-between">
         <span className="fw-semibold" style={{ color: "#1f355e" }}>
           Wafer Yield Analytics — Dashboard
         </span>
+
+        <button
+          className="btn btn-sm btn-outline-secondary"
+          onClick={handleLogout}
+        >
+          Logout
+        </button>
       </nav>
 
       {/* CONTENT */}
       <div className="container-fluid p-4">
-        {/* KPI ROW */}
         <div className="row g-3 mb-4">
           <div className="col-md-3">
             <div className="bg-white border rounded p-3">
@@ -43,13 +57,10 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* MAIN PANELS */}
         <div className="row g-4">
-          {/* LEFT: TABLE */}
           <div className="col-lg-7">
             <div className="bg-white border rounded p-3">
               <h6 className="fw-semibold mb-3">Recent Wafers</h6>
-
               <table className="table table-sm">
                 <thead className="table-light">
                   <tr>
@@ -66,22 +77,14 @@ function Dashboard() {
                     <td>—</td>
                     <td>—</td>
                   </tr>
-                  <tr>
-                    <td>—</td>
-                    <td>—</td>
-                    <td>—</td>
-                    <td>—</td>
-                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
 
-          {/* RIGHT: PLACEHOLDER */}
           <div className="col-lg-5">
             <div className="bg-white border rounded p-3 h-100">
               <h6 className="fw-semibold mb-3">Wafer Map Preview</h6>
-
               <div
                 className="d-flex align-items-center justify-content-center text-muted"
                 style={{
