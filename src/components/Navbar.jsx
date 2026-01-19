@@ -30,9 +30,14 @@ function Navbar() {
         onClick={() => navigate(isAuthenticated ? "/dashboard" : "/")}
       >
       <img
-        src="/images/blueSiliconWafer.png"
+        src="/images/logo.png"
         alt="Wafer Analytics Logo"
-        style={{ width: 26, height: 26 }}
+        style={{
+          width: 40,
+          height: 40,
+          borderRadius: "50%",
+          objectFit: "cover"
+        }}
       />
         <span>Wafer Yield Analytics</span>
       </div>
@@ -61,7 +66,7 @@ function Navbar() {
           onClick={toggleTheme}
         >
           <span>{theme === "dark" ? "🌙" : "☀️"}</span>
-          {theme === "dark" ? "Light Mode" : "Dark Mode"}
+          {theme === "dark" ? "Light" : "Dark"}
         </button>
 
         {!isAuthenticated && isLandingPage && (
