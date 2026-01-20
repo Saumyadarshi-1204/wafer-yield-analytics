@@ -1,19 +1,15 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
+import { useAuth } from "../context/AuthContext";
 
 function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
+  const { isAuthenticated, logout } = useAuth();
 
-  const isAuthenticated = localStorage.getItem("isAuth") === "true";
   const isLandingPage = location.pathname === "/";
-
-  const handleLogout = () => {
-    localStorage.removeItem("isAuth");
-    navigate("/");
-  };
 
   return (
     <nav
@@ -41,8 +37,7 @@ function Navbar() {
       />
         <span>Wafer Yield Analytics</span>
       </div>
-
-      {/* RIGHT SIDE */}
+      
       <div className="d-flex gap-3 align-items-center">
         {isAuthenticated && (
           <span
@@ -60,13 +55,11 @@ function Navbar() {
           </span>
         )}
 
-        {/* THEME TOGGLE — enhanced */}
         <button
-          className="btn btn-sm btn-outline-secondary d-flex align-items-center gap-2"
+          className="btn btn-sm btn-outline-secondary"
           onClick={toggleTheme}
         >
-          <span>{theme === "dark" ? "🌙" : "☀️"}</span>
-          {theme === "dark" ? "Light" : "Dark"}
+          {theme === "dark" ? "Light Mode" : "Dark Mode"}
         </button>
 
         {!isAuthenticated && isLandingPage && (
@@ -81,7 +74,10 @@ function Navbar() {
         {isAuthenticated && (
           <button
             className="btn btn-sm btn-outline-danger"
-            onClick={handleLogout}
+            onClick={() => {
+              logout();
+              navigate("/", { replace: true });
+            }}
           >
             Logout
           </button>
