@@ -11,15 +11,23 @@ function Sidebar() {
     cursor: "pointer",
     fontWeight: isActive(path) ? 600 : 400,
     color: isActive(path) ? "var(--accent)" : "var(--text-primary)",
+    padding: "6px 10px",
+    borderRadius: "6px",
+    backgroundColor: isActive(path)
+      ? "var(--accent-soft)"
+      : "transparent",
   });
 
   return (
-    <aside className="sidebar-theme p-3" style={{ width: "240px" }}>
+    <aside
+      className="sidebar-theme p-3 d-none d-md-block"
+      style={{ width: "240px" }}
+    >
       <h6 className="fw-semibold mb-4 text-secondary-theme">
         Navigation
       </h6>
 
-      <div className="d-flex flex-column gap-3 small">
+      <div className="d-flex flex-column gap-2 small">
         <span
           style={itemStyle("/dashboard")}
           onClick={() => navigate("/dashboard")}
