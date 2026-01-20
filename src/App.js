@@ -5,6 +5,7 @@ import { AuthProvider, useAuth } from "./context/AuthContext";
 
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import WaferAnalysis from "./pages/WaferAnalysis";
 import LotComparison from "./pages/LotComparison";
@@ -20,6 +21,7 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
       <Route
         path="/dashboard"
